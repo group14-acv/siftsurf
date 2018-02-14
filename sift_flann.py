@@ -3,15 +3,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-img1 = cv2.imread('b_crop.png')
-img2 = cv2.imread('bottle.png')
+img1 = cv2.imread('face.jpg')
+img2 = cv2.imread('face2.jpg')
 gray1 = cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)
 gray2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
 sift = cv2.xfeatures2d.SIFT_create()
+# sift = cv2.xfeatures2d.SIFT_create(contrastThreshold = 0.04, nOctaveLayers = 4)
+
 
 time_before = time.time()
 kp1, des1 = sift.detectAndCompute(gray1, None)
 kp2, des2 = sift.detectAndCompute(gray2, None)
+
+
 time_after = time.time()
 
 print('Time:', (time_after-time_before))
@@ -29,7 +33,7 @@ matchesMask = [[0,0] for i in range(len(matches))]
 
 numOfMatches = 0
 for i,(m,n) in enumerate(matches):
-    if m.distance < 0.7*n.distance:
+    if m.distance < 0.6*n.distance:
         matchesMask[i]=[1,0]
         numOfMatches+=1
 

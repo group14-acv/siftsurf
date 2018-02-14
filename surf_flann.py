@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-img1 = cv2.imread('b_crop.png')
-img2 = cv2.imread('bottle.png')
+img1 = cv2.imread('face.jpg')
+img2 = cv2.imread('face2.jpg')
 gray1 = cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)
 gray2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
 surf = cv2.xfeatures2d.SURF_create(400)
